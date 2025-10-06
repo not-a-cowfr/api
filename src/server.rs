@@ -19,7 +19,7 @@ pub async fn server() -> Result<(), Box<dyn std::error::Error>> {
 
 	let app: Router<()> = folder_router.with_state(app_state);
 
-	let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await?;
+	let listener = tokio::net::TcpListener::bind("0.0.0.0:80").await?;
 	info!("Listening on http://{}", listener.local_addr()?);
 	axum::serve(listener, app).await?;
 	Ok(())
